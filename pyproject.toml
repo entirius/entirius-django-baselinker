@@ -1,0 +1,58 @@
+[project]
+name = "entirius-django-baselinker"
+version = "2.0.0"
+description = "Baselinker Django module for Volkanos"
+authors = [{ name = "Entirius" }]
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MPL-2.0"
+dependencies = [
+    "Django>=4.0.0",
+    "requests",
+    "marshmallow-dataclass",
+    "entirius-py-int-enum-choices>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev  = ["ruff", "pre-commit"]
+test = ["pytest", "pytest-django"]
+
+[project.urls]
+Repository = "https://github.com/entirius/entirius-django-baselinker"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/django_baselinker"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "C4", "UP", "DJ", "S"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/**" = ["S101", "S105", "S106"]
+# Legacy migrated 1:1
+"src/django_baselinker/models.py" = ["DJ001", "DJ008", "DJ012"]
+"src/django_baselinker/utils/client.py" = ["S101", "S113", "F821", "F811", "E722", "B904", "B006"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["django_baselinker"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "tests.settings"
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.deptry]
+pep621_dev_dependency_groups = ["dev", "test"]

@@ -62,7 +62,10 @@ class BaselinkerClient:
             result = res.json()
         except JSONDecodeError:
             raise BaselinkerResponseError(
-                error_message="Response does not contain valid json data", url=url, request_params=params, response=res
+                error_message="Response does not contain valid json data",
+                url=self.url,
+                request_params=params,
+                response=res,
             )
         if settings.DEBUG:
             logger.debug(
@@ -83,7 +86,7 @@ class BaselinkerClient:
             if result["error_message"][:18] == "Query limit exceed":
                 raise BaselinkerBlockedTokenResponseError(
                     error_message=result["error_message"],
-                    url=url,
+                    url=self.url,
                     request_params=params,
                     response=res,
                     result_json=result,

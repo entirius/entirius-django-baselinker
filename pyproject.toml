@@ -1,7 +1,21 @@
 [project]
 name = "entirius-django-baselinker"
 version = "2.0.1"
-description = "Baselinker Django module for Volkanos"
+description = "Baselinker integration module for Entirius: accounts, order statuses, sources, journal events and an API client"
+keywords = ["django", "baselinker", "orders", "integration", "ecommerce", "entirius"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Framework :: Django",
+    "Framework :: Django :: 5.2",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP",
+]
 authors = [{ name = "Entirius" }]
 readme = "README.md"
 requires-python = ">=3.11"
@@ -18,7 +32,11 @@ dev  = ["ruff", "pre-commit"]
 test = ["pytest", "pytest-django"]
 
 [project.urls]
+Homepage = "https://docs.entirius.com/"
+Documentation = "https://github.com/entirius/entirius-django-baselinker/tree/develop/docs"
 Repository = "https://github.com/entirius/entirius-django-baselinker"
+Changelog = "https://github.com/entirius/entirius-django-baselinker/releases"
+Issues = "https://github.com/entirius/entirius-django-baselinker/issues"
 
 [build-system]
 requires = ["hatchling"]

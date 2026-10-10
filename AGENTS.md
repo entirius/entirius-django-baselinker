@@ -1,6 +1,7 @@
 # AGENTS.md
 
-Baselinker Django module for Volkanos — distribution `entirius-django-baselinker`, Django app `django_baselinker`.
+`entirius-django-baselinker` (Django app `django_baselinker`) — Baselinker integration module of Entirius: accounts,
+mirrored order statuses, order sources and journal events, and an API client.
 
 ## Commands
 
@@ -20,6 +21,7 @@ Baselinker Django module for Volkanos — distribution `entirius-django-baselink
 - Never rename the package / Django app_label / DB table prefix `django_baselinker` — it is a schema contract.
 - Migrations are part of the public contract — never edit an already released migration.
 - Default: do not commit — git is the user's call.
+- No AI attribution in commits or PR descriptions.
 
 ## Architecture
 
@@ -36,3 +38,9 @@ src/django_baselinker/
 
 Integration point: `BaselinkerClient.from_account(BaselinkerAccount)`; managers
 `update_from_data` / `update_for_account` mirror statuses and sources from the API.
+
+| Topic | Where |
+|---|---|
+| Baselinker API reference (external) | `docs/_index.md` |
+| Client methods and error types | `src/django_baselinker/utils/client.py` |
+| Journal log types | `src/django_baselinker/models.py` (`JournalLogType`) |
